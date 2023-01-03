@@ -1,0 +1,28 @@
+[submodule "glslang"]
+	path = glslang
+	url = https://github.com/KhronosGroup/glslang
+	branch = master
+[submodule "robin-hood-hashing"]
+	path = robin-hood-hashing
+	url = https://github.com/martinus/robin-hood-hashing
+	branch = master
+[submodule "SPIRV-Tools"]
+	path = SPIRV-Tools
+	url = https://github.com/KhronosGroup/SPIRV-Tools
+	branch = master
+[submodule "SPIRV-Headers"]
+	path = SPIRV-Headers
+	url = https://github.com/KhronosGroup/SPIRV-Headers
+	branch = master
+[submodule "Vulkan-ValidationLayers"]
+	path = Vulkan-ValidationLayers
+	url = https://github.com/KhronosGroup/Vulkan-ValidationLayers
+	branch = master
+[submodule "Vulkan-Headers"]
+	path = Vulkan-Headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers.git
+	branch = main
+[submodule "Vulkan-Loader"]
+	path = Vulkan-Loader
+	url = https://github.com/KhronosGroup/Vulkan-Loader
+	branch = master
