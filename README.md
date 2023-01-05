@@ -37,22 +37,27 @@ Dependencies on Linux (some extra, some not enough), example on Fedora:
 
 You should install the drivers on your graphics card. Otherwise vulkan will try to render on the software, it may be successful, but my system was failed on 'vkAcquireNextImageKHR'.
 
-To check the driver you can use this vulkan-tools aplication with command(this file may found in install_dir/bin): 
+To check the driver you can use this vulkan-tools aplication with command(this file may found in install_dir/bin):
+ 
 ```
 vulkaninfo --summary
 ```
-- shows at least one a GPU device.
+shows at least one a GPU device.
 
 On linux can try it:
 ```
 dkms status
-``` - shows a GPU driver.
+```
+ shows a GPU driver.
 
 (For nvidia):
+
 ```
 nvidia-smi
 ```
+
 ```
 nvidia-settings
 ``` 
+
 diplays drivers version and other usefull features.
