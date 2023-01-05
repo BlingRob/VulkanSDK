@@ -3,7 +3,7 @@ set(VULKAN_SDK_LIBRARY_DIR ${CMAKE_INSTALL_PREFIX}/lib64 CACHE STRING "Vulkan li
 add_custom_command(
 TARGET ${PROJECT_NAME}
 PRE_BUILD
-COMMAND ${CMAKE_SOURCE_DIR}/scripts/setx.sh VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/lib64/)
+COMMAND ${CMAKE_SOURCE_DIR}/scripts/setx.sh VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/share/vulkan/explicit_layer.d)
 
 add_custom_command(
 TARGET ${PROJECT_NAME}
@@ -24,3 +24,6 @@ list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools.a")
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools-shared.so")
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libvulkan.so")
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libVkLayer_khronos_validation.so")
+
+file(GLOB_RECURSE Vulkan_shared_lib
+${CMAKE_INSTALL_PREFIX}/lib64/libvulkan.so.?.?.*)

@@ -15,3 +15,6 @@ ${CMAKE_INSTALL_PREFIX}/lib/*.lib)
 
 file(GLOB_RECURSE Vulkan_shared_Libs
 ${CMAKE_INSTALL_PREFIX}/bin/*.dll)
+
+file(GLOB_RECURSE Vulkan_shared_lib
+${CMAKE_INSTALL_PREFIX}/bin/vulkan-1.dll)

@@ -1,0 +1,5 @@
+set(VULKAN_LIBS ${Vulkan_Libs} CACHE STRING "Vulkan libraries")
+set(VULKAN_SHARED_LIBS ${Vulkan_shared_Libs} CACHE STRING "Vulkan shared libraries")
+set(VULKAN_SHARED_LIB ${Vulkan_shared_lib} CACHE STRING "Vulkan library")
+set(VULKAN_SDK_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include CACHE STRING "Vulkan headers")
+set(VULKAN_SDK_BINARY_DIR ${CMAKE_INSTALL_PREFIX}/bin CACHE STRING "Vulkan binaries")
