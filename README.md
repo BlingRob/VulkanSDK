@@ -18,6 +18,18 @@ You can apply them in your project by CMake command:
 ```
 find_package(VulkanSDK HINTS ../cmake/)
 ```
+
+VulkanSDKConfig.cmake file contains variables: 
+- VULKAN_LIBS - static vulkan files;
+- VULKAN_SHARED_LIBS - shared vulkan files;
+- VULKAN_SHARED_LIB - vulkan loader shared library;
+- VULKAN_SDK_INCLUDE_DIR - headers files;
+- VULKAN_SDK_BINARY_DIR - binaries files.
+
+Two environment variables are also set: 
+* VK_LAYER_PATH - directory with json files;
+* VK_LOADER_DEBUG - include layers (all). 
+
 ## Dependencies
 
 Dependencies on Linux (some extra, some not enough), example on Fedora:
@@ -38,7 +50,7 @@ Dependencies on Linux (some extra, some not enough), example on Fedora:
 You should install the drivers on your graphics card. Otherwise vulkan will try to render on the software, it may be successful, but my system was failed on 'vkAcquireNextImageKHR'.
 
 To check the driver you can use this vulkan-tools aplication with command(this file may found in install_dir/bin):
- 
+
 ```
 vulkaninfo --summary
 ```
