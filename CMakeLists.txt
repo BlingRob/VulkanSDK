@@ -3,9 +3,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 project ("VulkanSDK")
 
-if("${CMAKE_BUILD_TYPE}" STREQUAL "")
-	set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
-endif()
+set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
+
 if("${CMAKE_BUILD_TYPE}" STREQUAL "")
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
