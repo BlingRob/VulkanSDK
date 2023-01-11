@@ -37,12 +37,7 @@ Dependencies on Linux (some extra, some not enough), example on Fedora:
 * libXext-devel.x86_64
 * libX11-devel.x86_64
 * libxcb-devel.x86_64
-* libwayland-client.x86_64
-* libwayland-cursor.x86_64
-* libwayland-egl.x86_64
-* libwayland-server.x86_64
 * wayland-devel.x86_64
-* egl-wayland.x86_64 
 * egl-wayland-devel.x86_64
 * libXrandr-devel.x86_64
 * wayland-protocols-devel.noarch
