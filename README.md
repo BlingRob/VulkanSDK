@@ -2,21 +2,24 @@
 
 The easiest way to build Vulkan SDK from source files.
 This cmake script collects Vulkan SDK and allows to development and run applications that use this API.
-It's the first version and a simple method to build: in cmake scripts using forced commands to generate another libraries via execute_process.   
+The foundation of this script is `ExternalProject` module and building with command `ExternalProject_Add`. 
 
 ## How to build
 
 ```
-cmake -DCMAKE_BUILD_TYPE={Release|Debug} dir_with_sources 
+cmake -DCMAKE_BUILD_TYPE={Release|Debug} dir_with_sources -DSDK_VERSION=x.x.xxx
 cmake --build .
 ```
 
-If CMAKE_BUILD_TYPE wasn't setted, use Debug configuration.
+If CMAKE_BUILD_TYPE wasn't set, use Debug configuration. 
+SDK_VERSION is numeric version, if wasn't set, then using last stable version.
+
+## How to use
 All variables needed to create your application are located in build_dir/cmake/VulkanSDKConfig.cmake. 
 You can apply them in your project by CMake command: 
 
 ```
-find_package(VulkanSDK HINTS ../cmake/)
+find_package(VulkanSDK HINTS build_dir/cmake/)
 ```
 
 VulkanSDKConfig.cmake file contains variables: 
@@ -31,6 +34,10 @@ Two environment variables are also set:
 * VK_LOADER_DEBUG - include layers (all). 
 
 ## Dependencies
+
+Utils:
+* git
+* CMake - 3.10
 
 Dependencies on Linux (some extra, some not enough), example on Fedora:
 

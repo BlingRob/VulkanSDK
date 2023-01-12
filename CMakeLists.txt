@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.21)
+cmake_minimum_required (VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 
 project ("VulkanSDK")
@@ -9,10 +9,11 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
-#May be no effect
-option(BUILD_WSI_WAYLAND_SUPPORT OFF)
+if("${SDK_VERSION}" STREQUAL "")
+	set(SDK_VERSION "1.3.236")
+endif()
 
-include(cmake/Building.cmake)
+include(cmake/DownloadAndBuild.cmake)
 
 add_custom_target(${PROJECT_NAME} ALL
     WORKING_DIRECTORY
@@ -20,6 +21,5 @@ add_custom_target(${PROJECT_NAME} ALL
     COMMENT
       "Build Vulkan SDK"
   )
-#############
 
 include(cmake/Package.cmake)
