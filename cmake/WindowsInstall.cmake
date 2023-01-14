@@ -10,11 +10,24 @@ TARGET ${PROJECT_NAME}
 PRE_BUILD
 COMMAND cmd /c ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.bat VK_LOADER_DEBUG "all")
 
-file(GLOB_RECURSE Vulkan_Libs
-${CMAKE_INSTALL_PREFIX}/lib/*.lib)
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+	set(DEBUG_SUFFIX "d")
+endif()
 
-file(GLOB_RECURSE Vulkan_shared_Libs
-${CMAKE_INSTALL_PREFIX}/bin/*.dll)
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/glslang${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/SPIRV${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/MachineIndependent${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/OGLCompiler${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/OSDependent${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/GenericCodeGen${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/glslang-default-resource-limits${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/SPVRemapper${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/HLSL${DEBUG_SUFFIX}.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/SPIRV-Tools.lib")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib/vulkan-1.lib")
 
-file(GLOB_RECURSE Vulkan_shared_lib
-${CMAKE_INSTALL_PREFIX}/bin/vulkan-1.dll)
+list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/bin/SPIRV-Tools-shared.dll")
+list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/bin/vulkan-1.dll")
+list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/bin/VkLayer_khronos_validation.dll")
+
+set(Vulkan_shared_lib "${CMAKE_INSTALL_PREFIX}/bin/vulkan-1.dll")

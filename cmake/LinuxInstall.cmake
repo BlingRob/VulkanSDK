@@ -25,5 +25,4 @@ list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools-sha
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libvulkan.so")
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libVkLayer_khronos_validation.so")
 
-file(GLOB_RECURSE Vulkan_shared_lib
-${CMAKE_INSTALL_PREFIX}/lib64/libvulkan.so.?.?.*)
+set(Vulkan_shared_lib "${CMAKE_INSTALL_PREFIX}/lib64/libvulkan.so.${SDK_VERSION}")
