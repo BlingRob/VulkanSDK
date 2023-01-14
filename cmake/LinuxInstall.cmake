@@ -3,12 +3,12 @@ set(VULKAN_SDK_LIBRARY_DIR ${CMAKE_INSTALL_PREFIX}/lib64 CACHE STRING "Vulkan li
 add_custom_command(
 TARGET ${PROJECT_NAME}
 PRE_BUILD
-COMMAND ${CMAKE_SOURCE_DIR}/scripts/setx.sh VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/share/vulkan/explicit_layer.d)
+COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.sh VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/share/vulkan/explicit_layer.d)
 
 add_custom_command(
 TARGET ${PROJECT_NAME}
 PRE_BUILD
-COMMAND ${CMAKE_SOURCE_DIR}/scripts/setx.sh VK_LOADER_DEBUG "all")
+COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.sh VK_LOADER_DEBUG "all")
 
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libglslang.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV.a")
