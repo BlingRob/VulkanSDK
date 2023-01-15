@@ -12,6 +12,7 @@ ExternalProject_Add(Vulkan-Headers
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers"
 )
 #################################################################
@@ -22,6 +23,7 @@ ExternalProject_Add(Vulkan-Loader
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DVULKAN_HEADERS_INSTALL_DIR=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader"
 )
 #################################################################
@@ -32,6 +34,7 @@ ExternalProject_Add(SPIRV-Headers
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers -B ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers --target install
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers"
 )
 #################################################################
@@ -42,6 +45,7 @@ ExternalProject_Add(SPIRV-Tools
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools -B ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DSPIRV-Headers_SOURCE_DIR=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools"
 )
 #################################################################
@@ -52,6 +56,7 @@ ExternalProject_Add(glslang
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/glslang -B ${CMAKE_CURRENT_BINARY_DIR}/glslang -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/glslang --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/glslang"
 )
 #################################################################
@@ -66,6 +71,7 @@ ExternalProject_Add(Vulkan-Tools
                                      -DBUILD_ICD=OFF
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools"
 )
 #########################Robin-hood-hashing#####################
@@ -89,6 +95,7 @@ ExternalProject_Add(Vulkan-ValidationLayers
                     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers"
 )
 #################################################################
