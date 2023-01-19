@@ -7,7 +7,7 @@ set(tag_sdk "sdk-${SDK_VERSION}")
 
 ##########################Vulkan Headers#########################
 ExternalProject_Add(Vulkan-Headers
-  GIT_REPOSITORY    git@github.com:KhronosGroup/Vulkan-Headers.git
+  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-Headers.git
   GIT_TAG           ${tag_v}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Headers --target install --config ${CMAKE_BUILD_TYPE}
@@ -18,7 +18,7 @@ ExternalProject_Add(Vulkan-Headers
 #################################################################
 ##########################Vulkan Loader##########################
 ExternalProject_Add(Vulkan-Loader
-  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-Loader
+  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-Loader.git
   GIT_TAG           ${tag_v}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DVULKAN_HEADERS_INSTALL_DIR=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader --target install --config ${CMAKE_BUILD_TYPE}
@@ -29,7 +29,7 @@ ExternalProject_Add(Vulkan-Loader
 #################################################################
 ##########################Vulkan SPIRV Headers###################
 ExternalProject_Add(SPIRV-Headers
-  GIT_REPOSITORY    https://github.com/KhronosGroup/SPIRV-Headers
+  GIT_REPOSITORY    https://github.com/KhronosGroup/SPIRV-Headers.git
   GIT_TAG           ${tag_sdk}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers -B ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers --target install
@@ -40,7 +40,7 @@ ExternalProject_Add(SPIRV-Headers
 #################################################################
 ##########################Vulkan SPIRV Tools#####################
 ExternalProject_Add(SPIRV-Tools
-  GIT_REPOSITORY    https://github.com/KhronosGroup/SPIRV-Tools
+  GIT_REPOSITORY    https://github.com/KhronosGroup/SPIRV-Tools.git
   GIT_TAG           ${tag_sdk}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools -B ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DSPIRV-Headers_SOURCE_DIR=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools --target install --config ${CMAKE_BUILD_TYPE}
@@ -51,7 +51,7 @@ ExternalProject_Add(SPIRV-Tools
 #################################################################
 ##########################Vulkan glslang#########################
 ExternalProject_Add(glslang
-  GIT_REPOSITORY    https://github.com/KhronosGroup/glslang
+  GIT_REPOSITORY    https://github.com/KhronosGroup/glslang.git
   GIT_TAG           ${tag_sdk}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/glslang -B ${CMAKE_CURRENT_BINARY_DIR}/glslang -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/glslang --target install --config ${CMAKE_BUILD_TYPE}
@@ -62,7 +62,7 @@ ExternalProject_Add(glslang
 #################################################################
 ##########################Vulkan Tools###########################
 ExternalProject_Add(Vulkan-Tools
-  GIT_REPOSITORY    git@github.com:KhronosGroup/Vulkan-Tools.git
+  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-Tools.git
   GIT_TAG           ${tag_sdk}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} 
                                      -DVULKAN_HEADERS_INSTALL_DIR=${CMAKE_INSTALL_PREFIX}
@@ -83,7 +83,7 @@ ExternalProject_Add(Vulkan-Tools
 #################################################################
 ##########################Vulkan ValidationLayers################
 ExternalProject_Add(Vulkan-ValidationLayers
-  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-ValidationLayers
+  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
   GIT_TAG           ${tag_v}
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers 
                     -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
