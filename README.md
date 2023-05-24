@@ -37,7 +37,7 @@ Two environment variables are also set:
 
 Utils:
 * git
-* CMake - 3.10
+* CMake - 3.17.2
 
 Dependencies on Linux (some extra, some not enough), example on Fedora:
 

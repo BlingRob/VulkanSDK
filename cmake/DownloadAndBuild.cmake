@@ -25,6 +25,7 @@ ExternalProject_Add(Vulkan-Loader
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Loader"
+  DEPENDS Vulkan-Headers
 )
 #################################################################
 ##########################Vulkan SPIRV Headers###################
@@ -47,6 +48,7 @@ ExternalProject_Add(SPIRV-Tools
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools"
+  DEPENDS SPIRV-Headers
 )
 #################################################################
 ##########################Vulkan glslang#########################
@@ -73,6 +75,7 @@ ExternalProject_Add(Vulkan-Tools
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools"
+  DEPENDS glslang Vulkan-Loader Vulkan-Headers
 )
 #########################Robin-hood-hashing#####################
 #ExternalProject_Add(robin-hood-hashing
@@ -97,5 +100,6 @@ ExternalProject_Add(Vulkan-ValidationLayers
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers"
+  DEPENDS Vulkan-Headers glslang SPIRV-Headers SPIRV-Tools
 )
 #################################################################

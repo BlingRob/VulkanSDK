@@ -18,9 +18,10 @@ include(cmake/DownloadAndBuild.cmake)
 add_custom_target(${PROJECT_NAME}
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS Vulkan-Headers Vulkan-Loader SPIRV-Headers SPIRV-Tools glslang Vulkan-Tools Vulkan-ValidationLayers
     COMMENT
       "Build Vulkan SDK"
   )
+
+add_dependencies(${PROJECT_NAME} Vulkan-Headers Vulkan-Loader SPIRV-Headers SPIRV-Tools glslang Vulkan-Tools Vulkan-ValidationLayers)
 
 include(cmake/Package.cmake)
