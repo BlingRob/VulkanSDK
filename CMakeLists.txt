@@ -15,7 +15,7 @@ endif()
 
 include(cmake/DownloadAndBuild.cmake)
 
-add_custom_target(${PROJECT_NAME}
+add_custom_target(${PROJECT_NAME} ALL
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT
