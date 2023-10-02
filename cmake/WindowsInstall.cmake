@@ -2,13 +2,11 @@ set(VULKAN_SDK_LIBRARY_DIR ${CMAKE_INSTALL_PREFIX}/lib CACHE STRING "Vulkan libs
 
 add_custom_command(
 TARGET ${PROJECT_NAME}
-PRE_BUILD
-COMMAND cmd /c ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.bat VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/bin/)
-
-add_custom_command(
-TARGET ${PROJECT_NAME}
-PRE_BUILD
-COMMAND cmd /c ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.bat VK_LOADER_DEBUG "all")
+POST_BUILD
+COMMAND cmd /c ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.bat VK_LAYER_PATH ${CMAKE_INSTALL_PREFIX}/bin/
+COMMAND cmd /c ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.bat VK_LOADER_DEBUG "all"
+COMMENT "Set layer path and debug level"
+VERBATIM)
 
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 	set(DEBUG_SUFFIX "d")
