@@ -8,7 +8,6 @@ COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/setx.sh VK_LOADER_DEBUG "all"
 COMMENT "Set layer path and debug level"
 VERBATIM)
 
-
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libglslang.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools-opt.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV.a")
