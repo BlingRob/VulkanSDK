@@ -10,9 +10,10 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
 endif()
 
 if("${SDK_VERSION}" STREQUAL "")
-	set(SDK_VERSION "1.3.236")
+	set(SDK_VERSION "1.3.290")
 endif()
 
+include(cmake/version_parser.cmake)
 include(cmake/DownloadAndBuild.cmake)
 
 add_custom_target(${PROJECT_NAME} ALL

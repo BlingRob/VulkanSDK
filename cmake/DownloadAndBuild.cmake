@@ -2,8 +2,18 @@
 
 include(ExternalProject)
 
-set(tag_v "v${SDK_VERSION}")
-set(tag_sdk "sdk-${SDK_VERSION}")
+parse_version("${SDK_VERSION}")
+if(${MAJOR_SDK_VERSION} GREATER_EQUAL 1 AND ${MINOR_SDK_VERSION} GREATER_EQUAL 3 AND ${PATCH_SDK_VERSION} GREATER_EQUAL 268)
+  set(ALLOW_EXTERNAL_SPIRV_TOOLS ON CACHE BOOL "ALLOW_EXTERNAL_SPIRV_TOOLS" FORCE)
+  set(tag_v "vulkan-sdk-${SDK_VERSION}")
+  set(tag_sdk "vulkan-sdk-${SDK_VERSION}")
+else()
+  # option(ALLOW_EXTERNAL_SPIRV_TOOLS ON)
+  set(tag_v "v${SDK_VERSION}")
+  set(tag_sdk "sdk-${SDK_VERSION}")
+endif()
+
+message("Set tag: " ${tag_v})
 
 ##########################Vulkan Headers#########################
 ExternalProject_Add(Vulkan-Headers
@@ -39,6 +49,9 @@ ExternalProject_Add(SPIRV-Headers
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers"
 )
 #################################################################
+find_package(SPIRV-Tools REQUIRED PATHS ${CMAKE_INSTALL_PREFIX}/SPIRV-Tools/cmake)
+find_package(SPIRV-Tools-opt REQUIRED PATHS ${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake)
+
 ##########################Vulkan SPIRV Tools#####################
 ExternalProject_Add(SPIRV-Tools
   GIT_REPOSITORY    https://github.com/KhronosGroup/SPIRV-Tools.git
@@ -55,11 +68,22 @@ ExternalProject_Add(SPIRV-Tools
 ExternalProject_Add(glslang
   GIT_REPOSITORY    https://github.com/KhronosGroup/glslang.git
   GIT_TAG           ${tag_sdk}
-  CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/glslang -B ${CMAKE_CURRENT_BINARY_DIR}/glslang -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/glslang -B ${CMAKE_CURRENT_BINARY_DIR}/glslang -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DALLOW_EXTERNAL_SPIRV_TOOLS=1
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/glslang --target install --config ${CMAKE_BUILD_TYPE}
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/glslang"
+)
+#################################################################
+##########################Volk###################################
+ExternalProject_Add(volk
+  GIT_REPOSITORY    https://github.com/zeux/volk.git
+  GIT_TAG           ${tag_sdk}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/volk -B ${CMAKE_CURRENT_BINARY_DIR}/volk -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DVOLK_INSTALL=ON
+  BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/volk --target install --config ${CMAKE_BUILD_TYPE}
+  INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
+  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/volk"
 )
 #################################################################
 ##########################Vulkan Tools###########################
@@ -75,7 +99,7 @@ ExternalProject_Add(Vulkan-Tools
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Tools"
-  DEPENDS glslang Vulkan-Loader Vulkan-Headers
+  DEPENDS glslang Vulkan-Loader Vulkan-Headers volk
 )
 #########################Robin-hood-hashing#####################
 #ExternalProject_Add(robin-hood-hashing
@@ -83,6 +107,17 @@ ExternalProject_Add(Vulkan-Tools
 #  GIT_TAG        master
 #  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/robin-hood-hashing"
 #)
+#################################################################
+##########################Vulkan-Utility-Libraries###############
+ExternalProject_Add(Vulkan-Utility-Libraries
+  GIT_REPOSITORY    https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
+  GIT_TAG           ${tag_sdk}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -S ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Utility-Libraries -B ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Utility-Libraries -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
+  BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Utility-Libraries --target install --config ${CMAKE_BUILD_TYPE}
+  INSTALL_COMMAND   ""
+  UPDATE_COMMAND    ""
+  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-Utility-Libraries"
+)
 #################################################################
 ##########################Vulkan ValidationLayers################
 ExternalProject_Add(Vulkan-ValidationLayers
@@ -100,6 +135,6 @@ ExternalProject_Add(Vulkan-ValidationLayers
   INSTALL_COMMAND   ""
   UPDATE_COMMAND    ""
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/Vulkan-ValidationLayers"
-  DEPENDS Vulkan-Headers glslang SPIRV-Headers SPIRV-Tools
+  DEPENDS Vulkan-Headers glslang SPIRV-Headers SPIRV-Tools Vulkan-Utility-Libraries
 )
 #################################################################

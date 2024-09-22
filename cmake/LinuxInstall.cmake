@@ -10,14 +10,13 @@ VERBATIM)
 
 
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libglslang.a")
+list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools-opt.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libMachineIndependent.a")
-list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libOGLCompiler.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libOSDependent.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libGenericCodeGen.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libglslang-default-resource-limits.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPVRemapper.a")
-list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libHLSL.a")
 list(APPEND Vulkan_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools.a")
 
 list(APPEND Vulkan_shared_Libs "${CMAKE_INSTALL_PREFIX}/lib64/libSPIRV-Tools-shared.so")
