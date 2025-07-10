@@ -49,8 +49,6 @@ ExternalProject_Add(SPIRV-Headers
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Headers"
 )
 #################################################################
-find_package(SPIRV-Tools REQUIRED PATHS ${CMAKE_INSTALL_PREFIX}/SPIRV-Tools/cmake)
-find_package(SPIRV-Tools-opt REQUIRED PATHS ${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake)
 
 ##########################Vulkan SPIRV Tools#####################
 ExternalProject_Add(SPIRV-Tools

@@ -10,7 +10,7 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
 endif()
 
 if("${SDK_VERSION}" STREQUAL "")
-	set(SDK_VERSION "1.3.290")
+	set(SDK_VERSION "1.4.321")
 endif()
 
 include(cmake/version_parser.cmake)
